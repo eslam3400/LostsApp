@@ -34,4 +34,4 @@ app.post('/post', Controller.User.addLostItem) //Done
 app.post('/post/foundit', Controller.User.foundLostItem) //Done
 app.get('/my-losts', Middleware.Auth.auth, Controller.User.trackLosts)
 
-app.listen(3000, () => console.log("http://localhost:3000"))
+app.listen(process.env.PORT || 3000, () => console.log("http://localhost:3000"))
