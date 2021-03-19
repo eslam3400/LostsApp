@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": null,
+      "first_name": null,
+      "last_name": null,
+      "email": null,
+      "password": null,
+      "location": null,
+      "gender": null
+    }
+  ],
+  "posts": [
+    {
+      "id": null,
+      "user_id": null,
+      "title": null,
+      "category": null,
+      "location": null,
+      "reward": null,
+      "description": null,
+      "img": null,
+      "founded": null,
+      "contact_number": null,
+      "created_at": null,
+      "lostet_at": null,
+      "updated_at": null
+    }
+  ]
+}

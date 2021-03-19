@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Winku Social Network Toolkit</title>
+    <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16" />
+    <link rel="stylesheet" href="css/main.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/color.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/my-style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/validate-user.js"></script>
+  </head>
+
+  <body>
+    <!--<div class="se-pre-con"></div>-->
+    <div class="theme-layout">
+      <div class="responsive-header">
+        <div class="mh-head first Sticky">
+          <span class="mh-text">
+            <a href="newsfeed.html" title=""
+              ><img src="images/logo2.png" alt=""
+            /></a>
+          </span>
+        </div>
+        <div class="mh-head second">
+          <form class="mh-form">
+            <input placeholder="search" />
+            <a href="#/" class="fa fa-search"></a>
+          </form>
+        </div>
+      </div>
+      <!-- responsive header -->
+
+      <div class="topbar stick">
+        <div class="logo">
+          <a href="index.html" class="mt-2" style="font-size: x-large"
+            >Three <span style="color: #088dcd">Eyed</span> Ravin</a
+          >
+        </div>
+      </div>
+      <!-- topbar -->
+
+      <section>
+        <div class="gap gray-bg">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="row" id="page-contents">
+                  <div class="col-lg-3">
+                    <aside class="sidebar static">
+                      <div class="widget d-none d-lg-block" id="e-shortcut">
+                        <h4 class="widget-title">Shortcuts</h4>
+                        <ul class="naves">
+                          <li>
+                            <i class="ti-clipboard"></i>
+                            <a href="index.html" title="">News feed</a>
+                          </li>
+                          <li>
+                            <i class="ti-user"></i>
+                            <a href="my-losts.html" title="">My Losts</a>
+                          </li>
+                          <li>
+                            <i class="ti-search"></i>
+                            <a href="search.html" title="">Search</a>
+                          </li>
+                          <li>
+                            <i class="ti-power-off"></i>
+                            <a
+                              onclick="event.preventDefault()"
+                              href="#"
+                              id="logout"
+                              >Log Out</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </aside>
+                  </div>
+                  <!-- sidebar -->
+                  <div class="col-lg-8" id="app">
+                    <!-- add post new box -->
+                    <div class="loadMore" v-if="">
+                      <div class="central-meta item" v-for="post in posts">
+                        <div class="user-post">
+                          <div class="friend-info">
+                            <div class="friend-name">
+                              <ins
+                                ><a href="time-line.html" title=""
+                                  >{{post.title}}</a
+                                ></ins
+                              >
+                              <span>Published: {{post.date}}</span>
+                            </div>
+                            <div class="post-meta">
+                              <img :src="post.img" alt="" />
+                              <div class="description">
+                                <p>{{post.discreption}}</p>
+                              </div>
+                              <div
+                                class="post-details pt-3"
+                                style="
+                                  width: 100%;
+                                  display: flex;
+                                  justify-content: space-between;
+                                  align-items: center;
+                                "
+                              >
+                                <p style="display: inline-block">
+                                  <i class="fas fa-map-marker-alt"></i> Location
+                                  : {{post.area}} |
+                                  <i class="fas fa-list-ul"></i> Category :
+                                  {{post.category}} |
+                                  <i class="fas fa-award"></i> Reward :
+                                  {{post.reward}}
+                                </p>
+                                <button
+                                  v-bind:id="post._id"
+                                  class="btn btn-primary found-it"
+                                  onclick="foundIt(this.getAttribute('id'))"
+                                  data-toggle="modal"
+                                  data-target="#exampleModal"
+                                >
+                                  I Found It
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Modal -->
+                      <div
+                        class="modal fade"
+                        id="exampleModal"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true"
+                      >
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">
+                                Let The Owner Contact U
+                              </h5>
+                              <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                              >
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <input
+                                type="number"
+                                id="phone-number"
+                                placeholder="Please Insert Your Phone Number ♥"
+                                style="width: 100%"
+                              />
+                            </div>
+                            <div class="modal-footer">
+                              <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-dismiss="modal"
+                              >
+                                Close
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-primary"
+                                id="phone-number-action"
+                              >
+                                Send It
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 col-md-4">
+              <div class="widget">
+                <div class="foot-logo">
+                  <div class="logo">
+                    <a href="index.html" title="" style="font-size: x-large"
+                      >Three <span style="color: #088dcd">Eyed</span> Ravin</a
+                    >
+                  </div>
+                  <p>
+                    The trio took this simple idea and built it into the world’s
+                    leading carpooling platform.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/main.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/map-init.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
+    <script>
+      let search = prompt("Please Enter The Item Title");
+      if (search != null) {
+        let app = new Vue({
+          el: "#app",
+          data: {
+            posts: $.get(`http://localhost:3000/get-posts/${search}`, {}, (data) => {
+              return data;
+            }),
+          },
+          methods: {
+            consoleLog: () => {
+              console.log(this.posts);
+            },
+          },
+        });
+        setTimeout(() => {
+          app.posts = app.posts.responseJSON;
+        }, 100);
+      }
+
+      $("#logout").click(() => {
+        sessionStorage.clear();
+        window.location.href = "landing.html";
+      });
+
+      let foundedItemId;
+      let foundIt = (id) => {
+        foundedItemId = id;
+      };
+      $("#phone-number-action").click(() => {
+        console.log(foundedItemId);
+        alert("Thanks For Helping Others ♥");
+        let phoneNumber = $("#phone-number").val();
+        $.get(
+          `http://localhost:3000/found-item/${foundedItemId}/${phoneNumber}`
+        );
+      });
+
+      const userData = JSON.parse(sessionStorage.getItem("user-data"));
+      document.getElementById("user-name").innerText = userData.fname;
+    </script>
+  </body>
+</html>

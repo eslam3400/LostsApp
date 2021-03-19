@@ -1,0 +1,17 @@
+#e-shortcut{
+    position: fixed !important;
+    top: 11.5%;
+    left: 4%;
+    width: 18%;
+}
+#e-categories{
+    position: fixed !important;
+    top: 11.5%;
+    right: 4%;
+    width: 18%;
+    max-height: 550px;
+    overflow: hidden;
+}
+#e-shortcut ul li{
+    padding-bottom: 10%;
+}

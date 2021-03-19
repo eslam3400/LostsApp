@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Winku Social Network Toolkit</title>
+    <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16" />
+    <link rel="stylesheet" href="css/main.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/color.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/my-style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+
+  <body>
+    <div class="theme-layout">
+      <div class="responsive-header">
+        <div class="mh-head first Sticky">
+          <span class="mh-text">
+            <a href="/" title=""><img src="images/logo2.png" alt="" /></a>
+          </span>
+        </div>
+      </div>
+      <!-- responsive header -->
+
+      <div class="topbar stick">
+        <div class="logo">
+          <a href="/" class="mt-2" style="font-size: x-large"
+            >Three <span style="color: #088dcd">Eyed</span> Ravin</a
+          >
+        </div>
+      </div>
+      <!-- topbar -->
+      <section>
+        <div class="gap gray-bg">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="row" id="page-contents">
+                  <div class="col-lg-3">
+                    <aside class="sidebar static">
+                      <div class="widget d-none d-lg-block" id="e-shortcut">
+                        <h4 class="widget-title">Shortcuts</h4>
+                        <ul class="naves">
+                          <li>
+                            <i class="ti-clipboard"></i>
+                            <a href="/" title="">News feed</a>
+                          </li>
+                          <li>
+                            <i class="ti-user"></i>
+                            <a href="/my-losts" title="">My Losts</a>
+                          </li>
+                          <!-- <li>
+                            <i class="ti-search"></i>
+                            <a href="search.html" title="">Search</a>
+                          </li> -->
+                          <li>
+                            <i class="ti-power-off"></i>
+                            <a href="/logout">Log Out</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </aside>
+                  </div>
+                  <!-- sidebar -->
+                  <div class="col-lg-8" id="app">
+                    <div
+                      class="alert alert-primary alert-dismissible fade show"
+                      role="alert"
+                    >
+                      Welcome Back Mr/Miss <strong id="user-name"></strong>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="central-meta">
+                      <div class="new-postbox">
+                        <figure>
+                          <img src="images/resources/admin2.jpg" alt="" />
+                        </figure>
+                        <div class="newpst-input">
+                          <form
+                            method="POST"
+                            action="/post"
+                            enctype="multipart/form-data"
+                          >
+                            <div style="display: flex; justify-content: center">
+                              <input
+                                type="text"
+                                name="title"
+                                style="
+                                  width: 50%;
+                                  border: 1px solid #eeeeee;
+                                  height: 35px;
+                                "
+                                placeholder="  Title"
+                              />
+                              <input
+                                type="text"
+                                name="category"
+                                style="
+                                  width: 50%;
+                                  border: 1px solid #eeeeee;
+                                  height: 35px;
+                                "
+                                placeholder="  Category"
+                              />
+                            </div>
+                            <div style="display: flex; justify-content: center">
+                              <input
+                                type="text"
+                                name="location"
+                                style="
+                                  width: 50%;
+                                  border: 1px solid #eeeeee;
+                                  height: 35px;
+                                "
+                                placeholder="  Country or City or State"
+                              />
+                              <input
+                                type="number"
+                                name="reward"
+                                style="
+                                  width: 50%;
+                                  border: 1px solid #eeeeee;
+                                  height: 35px;
+                                "
+                                placeholder="  Reward"
+                              />
+                            </div>
+                            <div style="display: flex; justify-content: center">
+                              <input
+                                class="pl-2"
+                                type="date"
+                                name="losted_at"
+                                style="
+                                  width: 100%;
+                                  border: 1px solid #eeeeee;
+                                  height: 35px;
+                                "
+                                placeholder="  Country or City or State"
+                              />
+                            </div>
+                            <textarea
+                              rows="1"
+                              placeholder="Write Description"
+                              name="description"
+                            ></textarea>
+                            <div class="attachments">
+                              <ul>
+                                <li>
+                                  <i class="fa fa-camera"></i>
+                                  <label class="fileContainer">
+                                    <input
+                                      type="file"
+                                      name="img"
+                                      accept="image/jpeg"
+                                    />
+                                  </label>
+                                </li>
+                                <li>
+                                  <button>Post</button>
+                                </li>
+                              </ul>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- add post new box -->
+                    <div class="loadMore">
+                      <post-container
+                        v-for="post in posts"
+                        :key="post.id"
+                        :id="post.id"
+                        :title="post.title"
+                        :category="post.category"
+                        :location="post.location"
+                        :reward="post.reward"
+                        :description="post.description"
+                        :losted_at="post.losted_at"
+                        :img="post.img"
+                      ></post-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 col-md-4">
+              <div class="widget">
+                <div class="foot-logo">
+                  <div class="logo">
+                    <a href="/" title="" style="font-size: x-large"
+                      >Three <span style="color: #088dcd">Eyed</span> Ravin</a
+                    >
+                  </div>
+                  <p>
+                    The trio took this simple idea and built it into the world’s
+                    leading carpooling platform.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/main.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/map-init.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            posts: <%- JSON.stringify(data) %>
+          };
+        },
+      });
+      app.component('post-container', {
+        props:[
+          'id',
+          'title',
+          'losted_at',
+          'description',
+          'location',
+          'category',
+          'reward',
+          'img'
+        ],
+        template: `
+          <div class="central-meta item">
+            <div class="user-post">
+              <div class="friend-info">
+                <div class="friend-name">
+                  <ins
+                    ><a href="time-line.html" title="">{{ title }}</a></ins
+                  >
+                  <span>Losted At: {{ losted_at }}</span>
+                </div>
+                <div class="post-meta">
+                  <img :src="'images/posts/'+img" alt="" />
+                  <div class="description">
+                    <p>{{ description }}</p>
+                  </div>
+                  <div
+                    class="post-details pt-3"
+                    style="
+                      width: 100%;
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                    "
+                  >
+                    <p style="display: inline-block">
+                      <i class="fas fa-map-marker-alt"></i> Location
+                      : {{ location }} |
+                      <i class="fas fa-list-ul"></i> Category :
+                      {{ category }} |
+                      <i class="fas fa-award"></i> Reward :
+                      {{ reward }}
+                    </p>
+                    <button
+                      class="btn btn-primary found-it"
+                      data-toggle="modal"
+                      :data-target="'#'+id"
+                    >
+                      I Found It
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            :id="id"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Let The Owner Contact U
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form method="POST" action="/post/foundit">
+                    <input
+                      type="number"
+                      name="phone"
+                      placeholder="Please Insert Your Phone Number ♥"
+                      style="width: 100%"
+                    />
+                    <input
+                      type="hidden"
+                      name="id"
+                      :value="id"
+                    />
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        type="submit"
+                        class="btn btn-primary"
+                      >
+                        Send It
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>`
+      });
+      app.mount("#app")
+      document.getElementById("user-name").innerText = <%- JSON.stringify(user) %>;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Winku Social Network Toolkit</title>
+    <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16" />
+
+    <link rel="stylesheet" href="css/main.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/color.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+
+  <body>
+    <div class="theme-layout">
+      <div class="container-fluid pdng0">
+        <div class="row merged">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="land-featurearea">
+              <div class="land-meta">
+                <a href="#" style="font-size: x-large"
+                  >Three <span style="color: #088dcd">Eyed</span> Ravin</a
+                >
+                <p>Dawrly is Bla Bla Bla.</p>
+                <div class="friend-logo">
+                  <span><img src="images/wink.png" alt="" /></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="login-reg-bg">
+              <div class="log-reg-area sign">
+                <h2 class="log-title">Login</h2>
+                <form method="POST" action="/login">
+                  <div class="form-group">
+                    <input type="text" name="email" required="required" />
+                    <label class="control-label" for="login-username"
+                      >Email</label
+                    ><i class="mtrl-select"></i>
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      name="password"
+                      required="required"
+                    />
+                    <label class="control-label" for="login-password"
+                      >Password</label
+                    ><i class="mtrl-select"></i>
+                  </div>
+                  <div class="submit-btns">
+                    <button
+                      id="login-action"
+                      class="mtr-btn signin"
+                      type="submit"
+                    >
+                      <span>Login</span>
+                    </button>
+                    <button class="mtr-btn signup" type="button">
+                      <span>Signup</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="log-reg-area reg">
+                <h2 class="log-title">Signup</h2>
+                <form method="POST" action="/signup">
+                  <div class="form-group">
+                    <input type="text" required name="first_name" />
+                    <label class="control-label" for="signup-fname"
+                      >First Name</label
+                    ><i class="mtrl-select"></i>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" required name="last_name" />
+                    <label class="control-label" for="signup-lname"
+                      >Last Name</label
+                    ><i class="mtrl-select"></i>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" required name="email" />
+                    <label class="control-label" for="signup-email">Email</label
+                    ><i class="mtrl-select"></i>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" required name="username" />
+                    <label class="control-label" for="signup-username"
+                      >User Name</label
+                    ><i class="mtrl-select"></i>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" required name="password" />
+                    <label class="control-label" for="signup-password"
+                      >Password</label
+                    ><i class="mtrl-select"></i>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" required name="signup-area" />
+                    <label class="control-label" name="location"
+                      >Country & Town ex (Egypt/Alexandria)</label
+                    ><i class="mtrl-select"></i>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" required name="gender" />
+                    <label class="control-label" for="signup-gender"
+                      >Gender</label
+                    >
+                    <i class="mtrl-select"></i>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked="checked"
+                        name="agree"
+                        required
+                      /><i class="check-box"></i>Accept Terms & Conditions ?
+                    </label>
+                  </div>
+                  <div class="submit-btns">
+                    <button class="mtr-btn signin" type="submit">
+                      <span>Signup</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      data-cfasync="false"
+      src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script src="js/main.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+      // $("#login-action").click(() => {
+      //   let username = $("#login-username").val();
+      //   let password = $("#login-password").val();
+      //   $.get(
+      //     `http://localhost:3000/login/${username}/${password}`,
+      //     {},
+      //     (data) => {
+      //       if (data.response === 0) {
+      //         alert("Username Or Password Are Wrong Please Try Again");
+      //       } else {
+      //         sessionStorage.setItem("user-data", JSON.stringify(data));
+      //         window.location.href = "index.html";
+      //       }
+      //     }
+      //   );
+      // });
+      // $("#signup-action").click(() => {
+      //   let fname = $("#signup-fname").val();
+      //   let lname = $("#signup-lname").val();
+      //   let email = $("#signup-email").val();
+      //   let username = $("#signup-username").val();
+      //   let password = $("#signup-password").val();
+      //   let area = $("#signup-area").val();
+      //   let gender = $("#signup-gender").val();
+      //   $.get(
+      //     `http://localhost:3000/signup/${fname}/${lname}/${email}/${username}/${password}/${area}/${gender}`,
+      //     {},
+      //     (data) => {
+      //       if (data.response !== 1)
+      //         alert(
+      //           "There Is Something Went Wrong Please Contact With The Support"
+      //         );
+      //       else
+      //         alert(
+      //           "User Created Successfully ♥ Please Go To The Login Page To Start Using The App"
+      //         );
+      //     }
+      //   );
+      // });
+    </script>
+  </body>
+</html>
