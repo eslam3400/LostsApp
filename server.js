@@ -25,7 +25,7 @@ app.use(sesssion({ secret: "ez" }))
  */
 app.use(fileUpload())
 
-app.get('/', Middleware.Auth.auth, Controller.User.newsFeed) //Done
+app.get('/', (req,res)=>res.send("Hello World")) //Done
 app.get('/login', (req, res) => res.render('login')) //Done
 app.get('/logout', Controller.User.logout) //Done
 app.post('/login', Controller.User.login) //Done
