@@ -51,7 +51,7 @@ let trackLosts = (req, res) => {
 };
 
 let newsFeed = (req, res) => {
-  new PostModel().getAll({ user_id: { $ne: req.session.user.id }, founded: false }, {}, (data) => {
+  new PostModel().getAll({ user_id: { $ne: req.session.user.id }, founded: false }, { created_at: -1 }, (data) => {
     res.render('index', {
       data,
       user: `${req.session.user.first_name} ${req.session.user.last_name}`
